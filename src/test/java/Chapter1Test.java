@@ -1,3 +1,4 @@
+import io.qameta.allure.Story;
 import io.restassured.http.ContentType;
 import io.restassured.internal.common.assertion.Assertion;
 import org.junit.jupiter.api.Test;
@@ -10,6 +11,8 @@ import static org.hamcrest.Matchers.hasSize;
 public class Chapter1Test {
 
     @Test
+    @Story("User tries to login the system with invalid username and invalid password.")
+
     public void requestZipCodeForPoland(){
         given().
                 log().all().

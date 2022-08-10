@@ -10,7 +10,7 @@ import static org.hamcrest.Matchers.hasSize;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
-public class Chapter2 {
+public class Chapter2Test {
 
     @Test
     public void requestZipCodeForPolandHas(){
