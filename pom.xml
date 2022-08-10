@@ -132,7 +132,7 @@
                     <!--suppress UnresolvedMavenProperty -->
                     <groups>${included.tags}</groups>
                     <!--suppress UnresolvedMavenProperty -->
-                    <excludedGroups>${excluded.tags}</excludedGroups>
+                    <excludedGroups>@Ignore</excludedGroups>
                     <systemProperties>
                         <!--suppress UnresolvedMavenProperty -->
                         <groups>${included.tags}</groups>

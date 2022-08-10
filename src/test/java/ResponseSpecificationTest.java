@@ -10,8 +10,7 @@ import pojos.ResponseBody;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
-public class Chapter4 {
-
+public class ResponseSpecificationTest {
     private static RequestSpecification requestSpec;
     private static ResponseSpecification responseSpec;
 

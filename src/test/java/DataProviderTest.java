@@ -5,7 +5,7 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
 
-public class DataProvider {
+public class DataProviderTest {
 
     public static Object[][] zipCodesAndCities() {
         return new Object[][]{

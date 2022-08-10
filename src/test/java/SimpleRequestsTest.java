@@ -1,6 +1,5 @@
 import io.qameta.allure.Story;
 import io.restassured.http.ContentType;
-import io.restassured.internal.common.assertion.Assertion;
 import org.junit.jupiter.api.Test;
 import pojos.ResponseBody;
 
@@ -8,7 +7,7 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.hasSize;
 
-public class Chapter1Test {
+public class SimpleRequestsTest {
 
     @Test
     @Story("User tries to login the system with invalid username and invalid password.")
