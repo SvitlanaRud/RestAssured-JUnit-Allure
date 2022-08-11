@@ -1,6 +1,7 @@
 package pojos;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.qameta.allure.Step;
 
 public class Place {
 
@@ -18,13 +19,14 @@ public class Place {
         this.stateAbbreviation = "RI";
         this.latitude = "1";
     }
-
+    @Step("Get place name")
     @JsonProperty("place name")
     public String getPlaceName() {
         return placeName;
     }
 
     @JsonProperty("place name")
+    @Step("Set place name {placeName}")
     public void setPlaceName(String placeName) {
         this.placeName = placeName;
     }

@@ -1,20 +1,24 @@
 import com.github.tomakehurst.wiremock.junit.WireMockRule;
+import io.qameta.allure.Feature;
 import io.restassured.http.ContentType;
 import org.junit.Ignore;
 import org.junit.Rule;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pojos.ResponseBody;
 
 import static com.github.tomakehurst.wiremock.core.WireMockConfiguration.options;
 import static io.restassured.RestAssured.given;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
+@DisplayName("Serialization and deserialization tests")
+@Feature("Api serialization deserialization tests")
 public class SerializationDeserializationTest {
     @Rule
     public WireMockRule wireMockRule = new WireMockRule(options().port(9876));
 
 
     @Test
+    @DisplayName("Request zip code for Poland and deserialize response body")
     public void requestZipCodeForPolandDeserialization() {
         ResponseBody body = given().
                 log().all().
@@ -27,6 +31,7 @@ public class SerializationDeserializationTest {
 
     @Test
     @Ignore
+    @DisplayName("Request zip code for Poland with serialized request body")
     public void requestZipCodeForPolandSerialization() {
         ResponseBody location = new ResponseBody();
 

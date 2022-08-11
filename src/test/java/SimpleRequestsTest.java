@@ -1,17 +1,18 @@
 import io.qameta.allure.Story;
 import io.restassured.http.ContentType;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pojos.ResponseBody;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.hasSize;
-
+@DisplayName("Simple get request tests")
 public class SimpleRequestsTest {
 
     @Test
     @Story("User tries to login the system with invalid username and invalid password.")
-
+    @DisplayName("Request zip code for Poland")
     public void requestZipCodeForPoland(){
         given().
                 log().all().
@@ -24,6 +25,7 @@ public class SimpleRequestsTest {
     }
 
     @Test
+    @DisplayName("Request zip code for Poland and assert response body")
     public void requestZipCodeForPolandAssertBody(){
         given().
                 log().all().
@@ -36,7 +38,8 @@ public class SimpleRequestsTest {
     }
 
     @Test
-    public void requestZipCodeForPolandDecerialization(){
+    @DisplayName("Request zip code for Poland and deserialize response")
+    public void requestZipCodeForPolandDeserialization(){
         ResponseBody body = given().
                 log().all().
         when().

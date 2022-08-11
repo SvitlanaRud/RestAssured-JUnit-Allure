@@ -1,10 +1,11 @@
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
-
+@DisplayName("Data provider tests")
 public class DataProviderTest {
 
     public static Object[][] zipCodesAndCities() {
@@ -17,7 +18,8 @@ public class DataProviderTest {
 
     @ParameterizedTest()
     @MethodSource("zipCodesAndCities")
-    public void requestZipCodeForPoland(String countryCode, String zip, String city) {
+    @DisplayName("Request zip codes for different countries")
+    public void requestZipCodesForDifferentCountries(String countryCode, String zip, String city) {
         given().
                 pathParam("countryCode", countryCode).pathParam("zipCode", zip).
                 log().all().

@@ -2,6 +2,8 @@ package pojos;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.gson.annotations.SerializedName;
+import io.qameta.allure.Attachment;
+import io.qameta.allure.Step;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,6 +46,7 @@ public class ResponseBody {
     }
 
     @JsonProperty("country abbreviation")
+    @Step("Get country abbreviation")
     public String getCountryAbbreviation() {
         return countryAbbreviation;
     }
@@ -53,6 +56,8 @@ public class ResponseBody {
         this.countryAbbreviation = countryAbbreviation;
     }
 
+    @Step("Get places list")
+    @Attachment
     public List<Place> getPlaces() {
         return places;
     }
