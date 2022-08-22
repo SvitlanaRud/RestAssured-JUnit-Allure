@@ -3,6 +3,7 @@ import io.restassured.http.ContentType;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pojos.Places;
+import utils.Config;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
@@ -18,8 +19,9 @@ public class SimpleRequestsTest {
     public void requestZipCodeForPoland(){
         given().
                 log().all().
+                baseUri(Config.BASE_URL).
         when().
-                get("http://api.zippopotam.us/PL/00-001").
+                get("/PL/00-001").
         then().log().body().
                 assertThat().
                 contentType(ContentType.JSON).
@@ -31,8 +33,9 @@ public class SimpleRequestsTest {
     public void requestZipCodeForPolandAssertBody(){
         given().
                 log().all().
+                baseUri(Config.BASE_URL).
         when().
-                get("http://api.zippopotam.us/PL/00-001").
+                get("/PL/00-001").
         then().log().body().
                 assertThat().
                 body("places[0].'place name'", equalTo("Warszawa"));

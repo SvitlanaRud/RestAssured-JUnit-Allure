@@ -10,6 +10,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pojos.Places;
+import utils.Config;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
@@ -26,7 +27,7 @@ public class RequestAndResponseSpecificationTest {
     public static void createRequestSpecification() {
         requestSpec = new RequestSpecBuilder().
                 addFilter(new AllureRestAssured()).
-                setBaseUri("http://api.zippopotam.us").
+                setBaseUri(Config.BASE_URL).
                 build();
     }
 

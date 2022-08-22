@@ -3,6 +3,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import pojos.Places;
+import utils.Config;
 
 
 import static io.restassured.RestAssured.given;
@@ -19,8 +20,9 @@ public class ResponseValidationTest {
         Places body =
                 given().
                 log().all().
+                baseUri(Config.BASE_URL).
         when().
-                get("http://api.zippopotam.us/PL/00-001").
+                get("/PL/00-001").
         then()
                 .extract().
                 as(Places.class);
@@ -36,8 +38,9 @@ public class ResponseValidationTest {
         Places body =
                 given().
                         log().all().
+                        baseUri(Config.BASE_URL).
                 when().
-                        get("http://api.zippopotam.us/PL/00-001").
+                        get("/PL/00-001").
                 then().
                         extract().
                         as(Places.class);

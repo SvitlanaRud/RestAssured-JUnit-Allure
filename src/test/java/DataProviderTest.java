@@ -1,6 +1,7 @@
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
+import utils.Config;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
@@ -23,8 +24,9 @@ public class DataProviderTest {
         given().
                 pathParam("countryCode", countryCode).pathParam("zipCode", zip).
                 log().all().
+                baseUri(Config.BASE_URL).
         when().
-                get("http://api.zippopotam.us/{countryCode}/{zipCode}").
+                get("/{countryCode}/{zipCode}").
         then().log().body().
                 assertThat().
                 body("places[0].'place name'", equalTo(city));
