@@ -23,9 +23,9 @@ public class DataProviderTest {
         given().
                 pathParam("countryCode", countryCode).pathParam("zipCode", zip).
                 log().all().
-                when().
+        when().
                 get("http://api.zippopotam.us/{countryCode}/{zipCode}").
-                then().log().body().
+        then().log().body().
                 assertThat().
                 body("places[0].'place name'", equalTo(city));
     }

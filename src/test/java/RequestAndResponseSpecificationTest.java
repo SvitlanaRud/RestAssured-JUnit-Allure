@@ -9,7 +9,7 @@ import io.restassured.specification.ResponseSpecification;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import pojos.ResponseBody;
+import pojos.Places;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
@@ -60,9 +60,9 @@ public class RequestAndResponseSpecificationTest {
         given().
                 spec(requestSpec).
                 log().all().
-                when().
+        when().
                 get("PL/00-001").
-                then().log().body().
+        then().log().body().
                 spec(responseSpec).
                 assertThat().
                 body("places[0].'place name'", equalTo("Warszawa"));
@@ -73,12 +73,14 @@ public class RequestAndResponseSpecificationTest {
     @DisplayName("Request zip code for Poland and deserialize response")
     @Story("Request specification")
     public void requestZipCodeForPolandDeserialization() {
-        ResponseBody body = given().
+        Places body = given().
                 spec(requestSpec).
                 log().all().
-                when().
+        when().
                 get("PL/00-001").
-                as(ResponseBody.class);
+        then().
+                extract().
+                as(Places.class);
 
         System.out.println(body.getCountry());
     }

@@ -2,11 +2,13 @@ import io.qameta.allure.Story;
 import io.restassured.http.ContentType;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import pojos.ResponseBody;
+import pojos.Places;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.hasSize;
+import static org.junit.Assert.assertEquals;
+
 @DisplayName("Simple get request tests")
 public class SimpleRequestsTest {
 
@@ -40,16 +42,15 @@ public class SimpleRequestsTest {
     @Test
     @DisplayName("Request zip code for Poland and deserialize response")
     public void requestZipCodeForPolandDeserialization(){
-        ResponseBody body = given().
+        Places plasesResponse = given().
                 log().all().
         when().
                 get("http://api.zippopotam.us/PL/00-001").
-                as(ResponseBody.class);
+        then().
+                extract().
+                as(Places.class);
 
-
-
-        System.out.println(body.getCountry());
+        assertEquals(plasesResponse.getPostCode(), "00-001");
 
     }
-
 }
